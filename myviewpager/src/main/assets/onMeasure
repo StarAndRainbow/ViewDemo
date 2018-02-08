@@ -1,0 +1,23 @@
+
+为什么要重写onMeasure()
+
+
+MeasureExampleView的layout_width以及layout_height属性值 match_parent 或者 wrap_content显示大小由其父容器控件决定。
+MeasureExampleView设置为固定的值，就显示该设定的值
+所以要重写onMeasure()
+
+MeasureSpec.getSize()会解析MeasureSpec值得到父容器width或者height。
+
+MeasureSpec.getMode()会得到三个int类型的值分别为:MeasureSpec.EXACTLY MeasureSpec.AT_MOST,MeasureSpec.UNSPECIFIED。
+
+MeasureSpec.UNSPECIFIED 未指定，所以可以设置任意大小。
+
+MeasureSpec.AT_MOST  MeasureExampleView可以为任意大小，但是有一个上限。
+
+MeasureSpec.EXACTLY ：  设置为明确值，或者match_parent的时候
+
+MeasureSpec.AT_MOST：   设置为wrap_content
+
+MeasureSpec.UNSPECIFIED:
+
+
