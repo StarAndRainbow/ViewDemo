@@ -21,14 +21,17 @@ public class MyView  extends Button{
     private static final String TAG = "MyView";
     public MyView(Context context) {
         super(context);
+        mContext= context;
     }
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext= context;
     }
 
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext= context;
     }
 
     float  moveX;
@@ -42,6 +45,7 @@ public class MyView  extends Button{
                         +"-----getTop:"+getTop()+"---getRight"+getRight()+"getBottom"+getBottom() + "-------rawX:"+event.getRawX()+"--------rawY:"+event.getRawY());
                 Log.e(TAG, "onTouchEvent: getY:"+getY()+"----getTranslationY:"+getTranslationY());
                 Log.e(TAG, "onTouchEvent: getX:"+event.getX() +"getY:"+event.getY() );
+                Log.e(TAG, "onTouchEvent: getX:10dp转为px"+DensityUtils.dip2px(mContext,10));
                 moveX = event.getX();
                 moveY = event.getY();
                 break;

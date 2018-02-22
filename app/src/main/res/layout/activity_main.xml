@@ -13,5 +13,6 @@
         android:layout_height="wrap_content"
         android:textColor="#fff"
         android:padding="20dp"
+        android:layout_marginLeft="10dp"
         android:text="View!" />
 </LinearLayout>
