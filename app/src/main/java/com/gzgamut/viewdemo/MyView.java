@@ -1,6 +1,7 @@
 package com.gzgamut.viewdemo;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -28,7 +29,6 @@ public class MyView  extends Button{
 
     public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
     }
 
     float  moveX;
@@ -59,4 +59,10 @@ public class MyView  extends Button{
         return true;
     }
 
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+    }
 }

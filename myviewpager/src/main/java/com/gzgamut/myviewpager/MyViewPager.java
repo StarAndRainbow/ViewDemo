@@ -113,11 +113,10 @@ public class MyViewPager extends ViewGroup {
                 //当前滑动页
                 pos = (scrollX / screentWidth);
                 LogUtil.i("屏幕的宽度:" + screentWidth + "-----当前滑动页面:" + pos);
-
                 break;
             case MotionEvent.ACTION_MOVE:
+                 //onTouchEvent委托给手势识别器，并且返回true，让这个控件消耗这个事件,或者直接设置手势监听器
                 gestureDetector.onTouchEvent(event);
-
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -129,12 +128,14 @@ public class MyViewPager extends ViewGroup {
                 if ((endX - startX) > screentWidth / 2) {
                     //往前走一页
                     pos = pos - 1;
+                    //检测边界
                     if (pos < 0) {
                         pos = 0;
                     }
                 } else if ((endX - startX) < screentWidth / 2 * -1) {
                     //往后走一页,这里添加多了一个Scroll页面
                     pos = pos + 1;
+
                     if (pos > titles.length-1  +1) {
                         pos = titles.length-1  +1;
                     }
@@ -172,6 +173,7 @@ public class MyViewPager extends ViewGroup {
             case MotionEvent.ACTION_DOWN:
                 //拦截了MOVE的事件后，DOWN的事件也要给拦截给手势识别器，否则会丢失事件
                 gestureDetector.onTouchEvent(ev);
+                //点击的时候保存呢位置
                 startX = ev.getX();
                 sX = ev.getX();
                 sY = ev.getY();
@@ -235,7 +237,7 @@ public class MyViewPager extends ViewGroup {
             height = DensityUtils.dip2px(mContext, 300);
         }
 
-        //子view是一个ViewGroup，要想显示子View ViewGroup中的内容，必须测量子View
+        //子view是一个ViewGroup，要想显示子View ViewGroup中的内容，必须测量子View,手动调用子view的measure
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec);

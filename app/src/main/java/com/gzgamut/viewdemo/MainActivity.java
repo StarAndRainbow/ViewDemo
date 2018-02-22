@@ -1,18 +1,13 @@
 package com.gzgamut.viewdemo;
 
-import android.app.Activity;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+//自定义View需要知道的一些知识点
 //了解View 的left top right bottom(相对父布局的位置，移动后不变) 和x,y, TranslationX和TranslationY（移动的位置）      x = left + TranslationX;
 
 //了解滑动事件的MotionEvent(滑动事件，保存了getX,getY，getRawX，getRawY等信息),TouchSlop（怎样才算滑动，该值就表示的是滑动的标准）  , RowX,RowY（当前View相对于屏幕）
@@ -33,6 +28,20 @@ import android.widget.TextView;
 
 //事件分发(理论+源码)MotionEvent分析，dispatchTouchEvent(返回结果受当前View onTouchEvent和下级View.dispatchTouchEvent影响)，InterceptchTouchEvent;(在dispatchTouchEvent中调用判断是否需要拦截事件)
 
+//RootView ,RootViewImpl，DecorView,Window,自定义View的三个方法,View的getMeasureWidth  getWidth  getTop  getBottom   getLeft   getRight
+
+//理解MeasureSpec
+
+//MeasureSpec和LayoutParams的关系
+
+//View的工作流程 measure , layout， draw
+
+//适配padding,margin属性父容器控制,getPaddingLeft()
+
+//自定义属性
+
+//
+
 public class MainActivity extends AppCompatActivity {
     private TextView view;
 
@@ -43,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         view = (TextView) findViewById(R.id.view);
 
-        //只能返回false
+        //只能返回false,返回true，则不调用自定义View的onTouchEvent
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event){
